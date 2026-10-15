@@ -68,6 +68,8 @@ nav{display:flex;gap:22px;align-items:center}nav a{color:#E5EDF7;text-decoration
 .points li:before{content:"\2713";position:absolute;left:0;top:0;color:var(--cyan);font-weight:800}
 .points b{color:#fff;font-weight:700}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
+.pdfl{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--mut);font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
+.pdfl:hover{color:var(--cyan)}
 /* full-width row: the graphic spans the page under the hero */
 .wide{grid-column:1/-1;margin-top:6px;padding-top:30px;border-top:1px solid rgba(255,255,255,.15)}
 
@@ -157,7 +159,8 @@ footer .w{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between
  .fc{width:100%}
  .hg>div:first-child{display:contents}
  /* mobile order: heading, text, points, buttons -> FORM -> graphic */
- .hg h1,.hero p.lead,.points,.cta{order:1}
+ .hg h1,.hero p.lead,.points,.cta,.pdfl{order:1}
+ .pdfl{align-self:flex-start}
  .fc{order:2;margin-top:26px}
  .hg>.wide{order:3;margin-top:30px}
  .hbtn{display:none}.hb{display:block}.mb{display:flex}.wa{bottom:72px}
@@ -194,6 +197,7 @@ footer .w{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between
 <li><b>Someone always on.</b> 24/7 managed support and regular cost reviews.</li>
 </ul>
 <div class="cta"><a class="btn b1 cta-t" href="#lead" data-focus>Book a free consultation</a></div>
+<a class="pdfl" id="pdfBtn" href="ISS-Technologies-Service-Brochure.pdf" download="ISS-Technologies-Service-Brochure.pdf">Download the service brochure (PDF)</a>
 </div>
 
 <div class="fc" id="lead"><h2 id="fh">Book a free consultation</h2><p>Typical response within 1 business day. Your information is kept confidential.</p>
@@ -307,6 +311,7 @@ document.addEventListener('click',function(e){
   var t=e.target.closest&&e.target.closest('a');if(!t)return;var h=t.getAttribute('href')||'';
   if(h.indexOf('tel:')===0){gtag('event','phone_click');trackConv('call')}
   else if(h.indexOf('https://wa.me')===0){gtag('event','whatsapp_click');trackConv('whatsapp')}
+  else if(t.id==='pdfBtn'){gtag('event','brochure_download',{link_location:'hero-link'})}
 });
 
 /* URL parameters: capture ad click IDs / UTMs, preselect service, swap headline, run CTA A/B test */
