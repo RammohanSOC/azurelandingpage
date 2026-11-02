@@ -1,4 +1,14 @@
+# robots.txt for https://isstechnologies.in
+# Upload to the website root so it opens at https://isstechnologies.in/robots.txt
+
 User-agent: *
 Allow: /
 
-Sitemap: https://azure.cyberxpertz.online/sitemap.xml
+# Old duplicate homepage URL with a query parameter (also 301-redirect it to /)
+Disallow: /*?path=
+
+# Add any private areas here if your site has them, for example:
+# Disallow: /admin/
+# Disallow: /thank-you/
+
+Sitemap: https://isstechnologies.in/sitemap.xml
